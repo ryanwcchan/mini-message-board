@@ -47,5 +47,58 @@
 
 .message-form {
     display: flex;
+    flex-direction: column;
     gap: 2rem;
+    width: 300px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-container label {
+    font-size: 1.2rem;
+}
+
+.input-container input {
+    padding: 0.5rem;
+    border-color: gray;
+    outline: none;
+}
+
+.input-container input:focus {
+    border-color: tomato;
+}
+
+.input-container textarea {
+    height: 10rem;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-btn {
+    padding: 0.5rem 1rem;
+    width: fit-content;
+    align-self: center;
+    background-color: tomato;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.submit-btn:hover {
+    background-color: darkred;
+}
+
+.msg-container {
+    background-color: gray;
 }

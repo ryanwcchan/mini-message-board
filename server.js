@@ -35,16 +35,25 @@ server.set('view engine', 'ejs')
 
 // server.use(express.urlencoded({ extended: true }))
 
-server.use((req, res, next) => {
-    console.log('new request made:')
-    console.log('hostname: ', req.hostname)
-    console.log('path: ', req.path)
-    console.log('method: ', req.method)
-    next();
-})
+// server.use((req, res, next) => {
+//     console.log('new request made:')
+//     console.log('hostname: ', req.hostname)
+//     console.log('path: ', req.path)
+//     console.log('method: ', req.method)
+//     next();
+// })
 
 // Index route
 server.get('/', (req, res) => {
+    res.render('index', { title: 'Home' })
+    // res.sendFile('./views/index.ejs', { root: __dirname })
+})
+
+server.get('/create-message', (req, res) => {
+    res.render('create')
+})
+
+server.get('/messages', (req, res) => {
     const messages = [
         {
             text: "Hi there!",
@@ -57,12 +66,8 @@ server.get('/', (req, res) => {
             added: new Date()
         }
     ];
-    res.render('index', { title: 'Home', messages })
-    // res.sendFile('./views/index.ejs', { root: __dirname })
-})
 
-server.get('/create-message', (req, res) => {
-    res.render('create')
+    res.render('messages', { messages })
 })
 
 // redirects

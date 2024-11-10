@@ -5,23 +5,30 @@
     <%- include('./partials/navbar.ejs') %>
 
     <div class="container">
-      <h1>Create new message</h1>
-      <form action="/new" method="post" class="message-form">
-        <div class="input-container">
-          <label for="name" class="">Name:</label>
-          <input type="text" name="name" id="name" />
-        </div>
+      <div class="form-container">
+        <h1>Create new message</h1>
+        <form action="/new" method="post" class="message-form">
+          <div class="input-container">
+            <label for="name" class="">Name:</label>
+            <input type="text" name="name" id="name" />
+          </div>
+          <div class="input-container">
+            <label for="date">Date:</label>
+            <input type="date" name="date" id="date" />
+          </div>
+          <div class="input-container">
+            <label for="message">Message:</label>
+            <textarea rows="4" name="message" id="message"></textarea>
+          </div>
 
-        <div class="input-container">
-          <label for="message">Message:</label>
-          <input type="text" name="message" id="message" />
-        </div>
-
-        <div class="input-container">
-          <label for="date">Date:</label>
-          <input type="date" name="date" id="date" />
-        </div>
-      </form>
+          <input
+            type="submit"
+            name="submit-btn"
+            value="Create"
+            class="submit-btn"
+          />
+        </form>
+      </div>
     </div>
   </body>
 </html>

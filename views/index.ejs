@@ -2,21 +2,10 @@
 <html lang="en">
   <%- include('./partials/head.ejs') %>
   <body>
-
     <%- include('./partials/navbar.ejs') %>
 
     <div class="container">
       <h1><%= title %></h1>
-      <h2>Messages</h2>
-      <% if(messages.length > 0) { %>
-        <% messages.forEach(message => { %>
-          <h2><%= message.text %></h1>
-          <p>From: <%= message.user %></p>
-          <p>Date: <%= message.added %></p>
-        <% }) %>
-      <% } else { %>
-        <p>No messages found</p>
-      <% } %>
     </div>
   </body>
 </html>
