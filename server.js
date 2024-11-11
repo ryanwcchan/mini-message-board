@@ -29,6 +29,8 @@ const browserSync = require('browser-sync').create()
 const server = express()
 const PORT = 3000
 
+let messages = []
+
 server.use(express.urlencoded({ extended: true }));
 
 server.use(express.static(path.join(__dirname, 'public')))
@@ -59,6 +61,7 @@ server.post('/new', (req, res) => {
     const name = req.body.name;
     const message = req.body.message;
 
+    messages.push({ text: message, user: name, added: new Date() });
     console.log(`Author ${name}`)
     console.log(`Message: ${message}`)
 
@@ -66,20 +69,7 @@ server.post('/new', (req, res) => {
 })
 
 server.get('/messages', (req, res) => {
-    const messages = [
-        {
-            text: "Hi there!",
-            user: "Amando",
-            added: new Date()
-        },
-        {
-            text: "Hello World!",
-            user: "Charles",
-            added: new Date()
-        }
-    ];
-
-    res.render('messages', { messages })
+    res.render('messages', { messages: messages.slice().reverse() })
 })
 
 // redirects
