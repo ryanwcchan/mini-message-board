@@ -29,6 +29,8 @@ const browserSync = require('browser-sync').create()
 const server = express()
 const PORT = 3000
 
+server.use(express.urlencoded({ extended: true }));
+
 server.use(express.static(path.join(__dirname, 'public')))
 
 server.set('view engine', 'ejs')
@@ -49,8 +51,18 @@ server.get('/', (req, res) => {
     // res.sendFile('./views/index.ejs', { root: __dirname })
 })
 
-server.get('/create-message', (req, res) => {
+server.get('/new', (req, res) => {
     res.render('create')
+})
+
+server.post('/new', (req, res) => {
+    const name = req.body.name;
+    const message = req.body.message;
+
+    console.log(`Author ${name}`)
+    console.log(`Message: ${message}`)
+
+    res.redirect('/messages')
 })
 
 server.get('/messages', (req, res) => {

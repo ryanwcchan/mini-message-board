@@ -7,17 +7,19 @@
 
     <div class="container">
         <h2>Messages</h2>
-        <% if(messages.length > 0) { %>
-          <% messages.forEach(message => { %>
-            <div class="msg-container">
-              <h2><%= message.text %></h1>
-              <p>From: <%= message.user %></p>
-              <p>Date: <%= message.added %></p>
-            </div>
-          <% }) %>
-        <% } else { %>
-          <p>No messages found</p>
-        <% } %>
+        <div class="wrapper">
+          <% if(messages.length > 0) { %>
+            <% messages.forEach(message => { %>
+              <div class="msg-container">
+                <h2><%= message.text %></h1>
+                <p>From: <%= message.user %></p>
+                <p>Date: <%= message.added %></p>
+              </div>
+            <% }) %>
+          <% } else { %>
+            <p>No messages found</p>
+          <% } %>
+        </div>
       </div>
   </body>
 </html>

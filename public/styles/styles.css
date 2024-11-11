@@ -99,6 +99,26 @@
     background-color: darkred;
 }
 
+.submit-btn:active {
+    transform: scale(0.9);
+}
+
 .msg-container {
-    background-color: gray;
+    border: 1px solid gray;
+    border-radius: 0.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.msg-container h2 {
+    padding: 2rem 2rem 0 2rem;
+}
+
+.msg-container p {
+    padding: 0 2rem;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
