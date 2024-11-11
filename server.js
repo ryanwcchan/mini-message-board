@@ -27,7 +27,7 @@ const path = require('path')
 const browserSync = require('browser-sync').create()
 
 const server = express()
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 server.use(express.urlencoded({ extended: true }));
 
