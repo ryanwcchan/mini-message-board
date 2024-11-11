@@ -29,8 +29,6 @@ const browserSync = require('browser-sync').create()
 const server = express()
 const PORT = 3000
 
-let messages = []
-
 server.use(express.urlencoded({ extended: true }));
 
 server.use(express.static(path.join(__dirname, 'public')))
@@ -47,6 +45,9 @@ server.set('view engine', 'ejs')
 //     next();
 // })
 
+let messages = []
+let messageIdCounter = 1;
+
 // Index route
 server.get('/', (req, res) => {
     res.render('index', { title: 'Home' })
@@ -60,16 +61,30 @@ server.get('/new', (req, res) => {
 server.post('/new', (req, res) => {
     const name = req.body.name;
     const message = req.body.message;
+    const id = messageIdCounter++
 
-    messages.push({ text: message, user: name, added: new Date() });
+    messages.push({ text: message, user: name, added: new Date(), id: id });
     console.log(`Author ${name}`)
     console.log(`Message: ${message}`)
 
     res.redirect('/messages')
 })
 
+
+
 server.get('/messages', (req, res) => {
     res.render('messages', { messages: messages.slice().reverse() })
+})
+
+server.get('/messages/:id', (req, res) => {
+    const messageId = parseInt(req.params.id, 10)
+    const message = messages.find(msg => msg.id === messageId)
+
+    if(message) {
+        res.render('messageInfo', { message })
+    } else {
+        res.status(404).send('Message not found')
+    }
 })
 
 // redirects

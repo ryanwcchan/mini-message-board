@@ -14,6 +14,7 @@
                 <h2><%= message.text %></h1>
                 <p>From: <%= message.user %></p>
                 <p>Date: <%= message.added %></p>
+                <a href="/messages/<%= message.id %>" class="button">Open</a>
               </div>
             <% }) %>
           <% } else { %>
